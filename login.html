@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #F5E1DA;
+}
+
+form {
+    width: 300px;
+    margin: 0 auto;
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    opacity: 0.8;
+}
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+
+    // For the purpose of this example, the user data is hardcoded.
+    // In a real-world scenario, you would typically retrieve the user data from a database or another persistence layer.
+    const registeredUsers = [
+        { email: 'user1@example.com', password: 'password1' },
+        { email: 'user2@example.com', password: 'password2' },
+        { email: 'user3@example.com', password: 'password3' },
+    ];
+
+    let isUserFound = false;
+    for (let user of registeredUsers) {
+        if (user.email === email && user.password === password) {
+            isUserFound = true;
+            break;
+        }
+    }
+
+    if (isUserFound) {
+        alert('Login Successful!');
+    } else {
+        alert('Invalid Email or Password. Please try again.');
+    }
+});
+    </script>
+</head>
+<body>
+    <h1 style="text-align: center;">Login</h1>
+    <form id="login-form">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br>
+
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
